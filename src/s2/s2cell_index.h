@@ -487,7 +487,7 @@ inline void S2CellIndex::CellIterator::Next() {
 inline S2CellIndex::RangeIterator::RangeIterator(const S2CellIndex* index)
     : range_nodes_(&index->range_nodes_), it_() {
   S2_DCHECK(!range_nodes_->empty()) << "Call Build() first.";
-  if (google::DEBUG_MODE) it_ = kUninitialized();  // See done().
+  if (google::S2_DEBUG_MODE) it_ = kUninitialized();  // See done().
 }
 
 inline S2CellId S2CellIndex::RangeIterator::start_id() const {

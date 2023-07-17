@@ -559,7 +559,7 @@ TEST(S2, GetIntersectionInvariants) {
   // are swapped and/or reversed.  The number of iterations is high because it
   // is difficult to generate test cases that show that CompareEdges() is
   // necessary and correct, for example.
-  const int kIters = google::DEBUG_MODE ? 5000 : 50000;
+  const int kIters = google::S2_DEBUG_MODE ? 5000 : 50000;
   for (int iter = 0; iter < kIters; ++iter) {
     S2Point a, b, c, d;
     do {

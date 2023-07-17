@@ -273,8 +273,8 @@ static void TestSubdivide(const S2Cell& cell) {
         force_subdivide = true;
     }
     if (force_subdivide ||
-        cell.level() < (google::DEBUG_MODE ? 5 : 6) ||
-        S2Testing::rnd.OneIn(google::DEBUG_MODE ? 5 : 4)) {
+        cell.level() < (google::S2_DEBUG_MODE ? 5 : 6) ||
+        S2Testing::rnd.OneIn(google::S2_DEBUG_MODE ? 5 : 4)) {
       TestSubdivide(children[i]);
     }
   }

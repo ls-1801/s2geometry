@@ -1732,7 +1732,7 @@ static void SplitAndAssemble(const S2Polygon& polygon) {
   S2Error error;
   ASSERT_TRUE(builder.Build(&error)) << error;
 
-  for (int iter = 0; iter < (google::DEBUG_MODE ? 3 : 10); ++iter) {
+  for (int iter = 0; iter < (google::S2_DEBUG_MODE ? 3 : 10); ++iter) {
     S2RegionCoverer coverer;
     // Compute the minimum level such that the polygon's bounding
     // cap is guaranteed to be cut.
@@ -1740,7 +1740,7 @@ static void SplitAndAssemble(const S2Polygon& polygon) {
     int min_level = S2::kMaxWidth.GetLevelForMaxValue(diameter);
 
     // Now choose a level that has up to 500 cells in the covering.
-    int level = min_level + S2Testing::rnd.Uniform(google::DEBUG_MODE ? 4 : 6);
+    int level = min_level + S2Testing::rnd.Uniform(google::S2_DEBUG_MODE ? 4 : 6);
     coverer.mutable_options()->set_min_level(min_level);
     coverer.mutable_options()->set_max_level(level);
     coverer.mutable_options()->set_max_cells(500);
@@ -2316,7 +2316,7 @@ class IsValidTest : public testing::Test {
 TEST_F(IsValidTest, UnitLength) {
   // This test can only be run in optimized builds because there are
   // S2_DCHECK(IsUnitLength()) calls scattered throughout the S2 code.
-  if (google::DEBUG_MODE) return;
+  if (google::S2_DEBUG_MODE) return;
   for (int iter = 0; iter < kIters; ++iter) {
     AddConcentricLoops(1 + rnd_->Uniform(6), 3 /*min_vertices*/);
     vector<S2Point>* vloop = vloops_[rnd_->Uniform(vloops_.size())].get();
@@ -2479,7 +2479,7 @@ TEST_F(IsValidTest, FuzzTest) {
   // when they receive arbitrary invalid input.  (We don't test large inputs;
   // it is assumed that the client enforces their own size limits before even
   // attempting to construct geometric objects.)
-  if (google::DEBUG_MODE)
+  if (google::S2_DEBUG_MODE)
     return;  // Requires unit length vertices.
   for (int iter = 0; iter < kIters; ++iter) {
     int num_loops = 1 + rnd_->Uniform(10);

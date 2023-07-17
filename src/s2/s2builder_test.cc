@@ -1435,7 +1435,7 @@ TEST(S2Builder, SelfIntersectionStressTest) {
     S2Polygon output;
     builder.StartLayer(make_unique<S2PolygonLayer>(
         &output, S2PolygonLayer::Options(EdgeType::UNDIRECTED)));
-    vector<S2Point> vertices(google::DEBUG_MODE ? 50 : 200);
+    vector<S2Point> vertices(google::S2_DEBUG_MODE ? 50 : 200);
     for (S2Point& vertex : vertices) {
       vertex = S2Testing::SamplePoint(cap);
     }
@@ -1460,11 +1460,11 @@ TEST(S2Builder, SelfIntersectionStressTest) {
 
 TEST(S2Builder, FractalStressTest) {
   const int kIters =
-      (google::DEBUG_MODE ? 100 : 1000) * absl::GetFlag(FLAGS_iteration_multiplier);
+      (google::S2_DEBUG_MODE ? 100 : 1000) * absl::GetFlag(FLAGS_iteration_multiplier);
   for (int iter = 0; iter < kIters; ++iter) {
     S2Testing::rnd.Reset(iter + 1);  // Easier to reproduce a specific case.
     S2Testing::Fractal fractal;
-    fractal.SetLevelForApproxMaxEdges(google::DEBUG_MODE ? 800 : 12800);
+    fractal.SetLevelForApproxMaxEdges(google::S2_DEBUG_MODE ? 800 : 12800);
     fractal.SetLevelForApproxMinEdges(12);
     fractal.set_fractal_dimension(1.5 + 0.5 * S2Testing::rnd.RandDouble());
     S2Polygon input(fractal.MakeLoop(S2Testing::GetRandomFrame(),

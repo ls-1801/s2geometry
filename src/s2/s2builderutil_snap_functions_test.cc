@@ -135,7 +135,7 @@ TEST(IntLatLngSnapFunction, SnapPoint) {
 }
 
 // S2CellIdSnapFunction MinEdgeVertexSeparationForLevel has a difference of
-// 3.88e-8 between google::DEBUG_MODE and non-google::DEBUG_MODE results, but otherwise results
+// 3.88e-8 between google::S2_DEBUG_MODE and non-google::S2_DEBUG_MODE results, but otherwise results
 // are the same within 1e-15.
 static double kRatioTolerance = 1e-7;
 static S2CellId kSearchRootId = S2CellId::FromFace(0);
@@ -368,7 +368,7 @@ static double GetS2CellIdMinEdgeSeparation(
   // them.  The results vary slightly according to how many candidates we
   // keep, but the variations are much smaller than the conservative
   // assumptions made by the S2CellIdSnapFunction implementation.
-  int num_to_keep = google::DEBUG_MODE ? 20 : 100;
+  int num_to_keep = google::S2_DEBUG_MODE ? 20 : 100;
   int num_to_print = 3;
   vector<pair<double, S2CellId>> sorted;
   for (const auto& entry : best_scores) {
@@ -666,7 +666,7 @@ static double GetLatLngMinEdgeSeparation(
   std::sort(scores.begin(), scores.end());
   scores.erase(std::unique(scores.begin(), scores.end()), scores.end());
   best_configs->clear();
-  int num_to_keep = google::DEBUG_MODE ? 50 : 200;
+  int num_to_keep = google::S2_DEBUG_MODE ? 50 : 200;
   int num_to_print = 3;
   printf("Scale %" PRId64 ":\n", int64{scale});
   for (const auto& entry : scores) {

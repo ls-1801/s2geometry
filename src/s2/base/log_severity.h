@@ -22,9 +22,9 @@
 namespace google {
 
 #ifdef NDEBUG
-constexpr bool DEBUG_MODE = false;
+constexpr bool S2_DEBUG_MODE = false;
 #else
-constexpr bool DEBUG_MODE = true;
+constexpr bool S2_DEBUG_MODE = true;
 #endif
 
 }  // namespace google

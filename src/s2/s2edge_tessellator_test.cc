@@ -369,7 +369,7 @@ void TestEdgeError(const S2::Projection& proj, double t) {
 
   // Keep track of the average and maximum geometric and parametric errors.
   Stats stats_g, stats_p;
-  const int kIters = google::DEBUG_MODE ? 10000 : 100000;
+  const int kIters = google::S2_DEBUG_MODE ? 10000 : 100000;
   for (int iter = 0; iter < kIters; ++iter) {
     S2Testing::rnd.Reset(iter);
     S2Point a = S2Testing::RandomPoint();
@@ -440,7 +440,7 @@ TEST(S2EdgeTessellator, MaxEdgeErrorMercator) {
 // Tessellates random edges using the given projection and tolerance, and
 // verifies that the expected criteria are satisfied.
 void TestRandomEdges(const S2::Projection& proj, S1Angle tolerance) {
-  const int kIters = google::DEBUG_MODE ? 50 : 500;
+  const int kIters = google::S2_DEBUG_MODE ? 50 : 500;
   double max_r2 = 0, max_s2 = 0;
   for (int iter = 0; iter < kIters; ++iter) {
     S2Testing::rnd.Reset(iter);
@@ -473,7 +473,7 @@ TEST(S2EdgeTessellator, UnprojectedAccuracyRandomCheck) {
   S2::PlateCarreeProjection proj(180);
   S1Angle tolerance(S1Angle::Degrees(1e-3));
   S2Testing::Random rand;
-  const int kIters = google::DEBUG_MODE ? 250 : 5000;
+  const int kIters = google::S2_DEBUG_MODE ? 250 : 5000;
   for (int i = 0; i < kIters; ++i) {
     S2Testing::rnd.Reset(i);
     double alat = rand.UniformDouble(-89.99, 89.99);
@@ -491,7 +491,7 @@ TEST(S2EdgeTessellator, ProjectedAccuracyRandomCheck) {
   S2::PlateCarreeProjection proj(180);
   S1Angle tolerance(S1Angle::Degrees(1e-3));
   S2Testing::Random rand;
-  const int kIters = google::DEBUG_MODE ? 250 : 5000;
+  const int kIters = google::S2_DEBUG_MODE ? 250 : 5000;
   for (int i = 0; i < kIters; ++i) {
     S2Testing::rnd.Reset(i);
     double alat = rand.UniformDouble(-89.99, 89.99);

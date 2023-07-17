@@ -170,7 +170,7 @@ vector<string> S2RegionTermIndexer::GetIndexTermsForCanonicalCovering(
   // that query regions will never contain a descendant of these cells.
 
   S2_CHECK(!options_.index_contains_points_only());
-  if (google::DEBUG_MODE) {
+  if (google::S2_DEBUG_MODE) {
     *coverer_.mutable_options() = options_;
     S2_CHECK(coverer_.IsCanonical(covering));
   }
@@ -245,7 +245,7 @@ vector<string> S2RegionTermIndexer::GetQueryTermsForCanonicalCovering(
     const S2CellUnion& covering, string_view prefix) {
   // See the top of this file for an overview of the indexing strategy.
 
-  if (google::DEBUG_MODE) {
+  if (google::S2_DEBUG_MODE) {
     *coverer_.mutable_options() = options_;
     S2_CHECK(coverer_.IsCanonical(covering));
   }

@@ -375,7 +375,7 @@ TEST(EncodedS2PointVectorTest, ManyDuplicatePointsAtAllLevels) {
 
 TEST(EncodedS2PointVectorTest, SnappedFractalLoops) {
   S2Testing::rnd.Reset(absl::GetFlag(FLAGS_s2_random_seed));
-  int kMaxPoints = 3 << (google::DEBUG_MODE ? 10 : 14);
+  int kMaxPoints = 3 << (google::S2_DEBUG_MODE ? 10 : 14);
   for (int num_points = 3; num_points <= kMaxPoints; num_points *= 4) {
     size_t s2polygon_size = 0, lax_polygon_size = 0;
     for (int i = 0; i < 10; ++i) {

@@ -1243,7 +1243,7 @@ void S2Builder::SnapEdge(InputEdgeId e, vector<SiteId>* chain) const {
     }
   }
   S2_DCHECK(!chain->empty());
-  if (google::DEBUG_MODE) {
+  if (google::S2_DEBUG_MODE) {
     for (SiteId site_id : candidates) {
       if (s2pred::CompareDistances(y, sites_[chain->back()],
                                    sites_[site_id]) > 0) {
